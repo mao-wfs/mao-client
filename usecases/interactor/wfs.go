@@ -5,14 +5,14 @@ import (
 	"github.com/mao-wfs/maoctrl/usecases/ports"
 )
 
-// DeviceInteractor is the interactor for MAO controller.
-type DeviceInteractor struct {
+// WFSInteractor is the interactor for MAO controller.
+type WFSInteractor struct {
 	Config     ports.Config
 	WFSHandler domain.WFSHandler
 }
 
 // Start starts MAO wavefront sensor.
-func (i *DeviceInteractor) Start() error {
+func (i *WFSInteractor) Start() error {
 	if err := i.WFSHandler.Initialize(i.Config); err != nil {
 		return err
 	}
@@ -23,7 +23,7 @@ func (i *DeviceInteractor) Start() error {
 }
 
 // Halt stops MAO wavefront sensor.
-func (i *DeviceInteractor) Halt() error {
+func (i *WFSInteractor) Halt() error {
 	if err := i.WFSHandler.Halt(); err != nil {
 		return err
 	}
