@@ -11,6 +11,14 @@ type WFSInteractor struct {
 	WFSHandler domain.WFSHandler
 }
 
+// NewWFSInteractor creates the new interactor for the WFS usecase.
+func NewWFSInteractor(conf ports.Config, handler domain.WFSHandler) *WFSInteractor {
+	return &WFSInteractor{
+		Config:     conf,
+		WFSHandler: handler,
+	}
+}
+
 // Start starts MAO wavefront sensor.
 func (i *WFSInteractor) Start() error {
 	if err := i.WFSHandler.Initialize(i.Config); err != nil {
