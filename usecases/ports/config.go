@@ -1,7 +1,7 @@
 package ports
 
-// Config is the configure for MAO.
-type Config interface {
+// ConfigPort is the configure for MAO.
+type ConfigPort interface {
 	Correlator(args ...interface{})
 	Switch(args ...interface{})
 }
