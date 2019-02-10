@@ -1,2 +1,5 @@
 # maoctrl
-🎮 Device controller for MAO wavefront sensor
+This is the MAO controller server.
+
+## Installation
+Get the maoctrl source with `go get -d -u github.com/mao-wfs/maoctrl`
