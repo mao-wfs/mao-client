@@ -21,16 +21,16 @@ type CorrelatorConfig struct {
 	WindowFunction  WindowFunction
 }
 
+// SwitchConfig represents the configure for the switch of MAO.
+type SwitchConfig struct {
+	SwitchOrder SwitchOrder
+}
+
 // IntegrationTime is the integration time in a correlation.
 type IntegrationTime uint8
 
 // WindowFunction is the window function for a FFT in a correlation.
 type WindowFunction string
-
-// SwitchConfig represents the configure for the switch of MAO.
-type SwitchConfig struct {
-	SwitchOrder SwitchOrder
-}
 
 // SwitchOrder is the order to switch.
 type SwitchOrder []string
