@@ -2,7 +2,11 @@ package ports
 
 // ConfigPort is the configure for MAO.
 type ConfigPort interface {
-	FormatConfig(corrConf *CorrelatorConfig, swConf *SwitchConfig) (*WFSConfig, error)
+	FormatConfig(
+		integTime IntegrationTime,
+		winFunc WindowFunction,
+		swOrder SwitchOrder,
+	) (*WFSConfig, error)
 }
 
 // WFSConfig represents the configure for MAO.

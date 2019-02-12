@@ -20,8 +20,12 @@ func NewWFSInteractor(confPort ports.ConfigPort, handler domain.WFSHandler) *WFS
 }
 
 // Initialize initialize MAO wavefront sensor.
-func (i *WFSInteractor) Initialize(corrConf *ports.CorrelatorConfig, swConf *ports.SwitchConfig) error {
-	wfsConf, err := i.ConfigPort.FormatConfig(corrConf, swConf)
+func (i *WFSInteractor) Initialize(
+	integTime ports.IntegrationTime,
+	winFunc ports.WindowFunction,
+	swOrder ports.SwitchOrder,
+) error {
+	wfsConf, err := i.ConfigPort.FormatConfig(integTime, winFunc, swOrder)
 	if err != nil {
 		return err
 	}
