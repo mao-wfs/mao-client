@@ -35,11 +35,10 @@ func (i *WFSInteractor) Start() error {
 
 // Halt stops MAO wavefront sensor.
 func (i *WFSInteractor) Halt() error {
-	if err := i.Handler.Halt(); err != nil {
-		return err
-	}
-	if err := i.Handler.Finalize(); err != nil {
-		return err
-	}
-	return nil
+	return i.Handler.Halt()
+}
+
+// Finalize finalize MAO wavefront sensor.
+func (i *WFSInteractor) Finalize() error {
+	return i.Handler.Finalize()
 }
