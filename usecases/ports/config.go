@@ -11,8 +11,8 @@ type ConfigPort interface {
 
 // WFSConfig represents the configure for MAO.
 type WFSConfig struct {
-	Correlator CorrelatorConfig
-	Switch     SwitchConfig
+	Correlator *CorrelatorConfig
+	Switch     *SwitchConfig
 }
 
 // CorrelatorConfig represents the configure for the correlator of MAO.
