@@ -19,15 +19,18 @@ func NewWFSInteractor(confPort ports.ConfigPort, handler domain.WFSHandler) *WFS
 	}
 }
 
+// Initialize initialize MAO wavefront sensor.
+func (i *WFSInteractor) Initialize(corrConf *ports.CorrelatorConfig, swConf *ports.SwitchConfig) error {
+	wfsConf, err := i.ConfigPort.FormatConfig(corrConf, swConf)
+	if err != nil {
+		return err
+	}
+	return i.Handler.Initialize(wfsConf)
+}
+
 // Start starts MAO wavefront sensor.
 func (i *WFSInteractor) Start() error {
-	if err := i.Handler.Initialize(i.ConfigPort); err != nil {
-		return err
-	}
-	if err := i.Handler.Start(); err != nil {
-		return err
-	}
-	return nil
+	return i.Handler.Start()
 }
 
 // Halt stops MAO wavefront sensor.
