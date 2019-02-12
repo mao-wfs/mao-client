@@ -7,21 +7,21 @@ import (
 
 // WFSInteractor is the interactor for MAO controller.
 type WFSInteractor struct {
-	Config  ports.ConfigPort
-	Handler domain.WFSHandler
+	ConfigPort ports.ConfigPort
+	Handler    domain.WFSHandler
 }
 
 // NewWFSInteractor creates the new interactor for the WFS usecase.
-func NewWFSInteractor(conf ports.ConfigPort, handler domain.WFSHandler) *WFSInteractor {
+func NewWFSInteractor(confPort ports.ConfigPort, handler domain.WFSHandler) *WFSInteractor {
 	return &WFSInteractor{
-		Config:  conf,
-		Handler: handler,
+		ConfigPort: confPort,
+		Handler:    handler,
 	}
 }
 
 // Start starts MAO wavefront sensor.
 func (i *WFSInteractor) Start() error {
-	if err := i.Handler.Initialize(i.Config); err != nil {
+	if err := i.Handler.Initialize(i.ConfigPort); err != nil {
 		return err
 	}
 	if err := i.Handler.Start(); err != nil {
