@@ -32,6 +32,11 @@ func (i *WFSInteractor) Initialize(
 	return i.Handler.Initialize(wfsConf)
 }
 
+// Finalize finalize MAO wavefront sensor.
+func (i *WFSInteractor) Finalize() error {
+	return i.Handler.Finalize()
+}
+
 // Start starts MAO wavefront sensor.
 func (i *WFSInteractor) Start() error {
 	return i.Handler.Start()
@@ -40,9 +45,4 @@ func (i *WFSInteractor) Start() error {
 // Halt stops MAO wavefront sensor.
 func (i *WFSInteractor) Halt() error {
 	return i.Handler.Halt()
-}
-
-// Finalize finalize MAO wavefront sensor.
-func (i *WFSInteractor) Finalize() error {
-	return i.Handler.Finalize()
 }
