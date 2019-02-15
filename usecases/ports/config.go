@@ -34,6 +34,13 @@ type SwitchConfig struct {
 	SwitchOrder SwitchOrder
 }
 
+// NewSwitchConfig returns the configure of the switch for MAO wavefront sensor.
+func NewSwitchConfig(swOrder SwitchOrder) *SwitchConfig {
+	return &SwitchConfig{
+		SwitchOrder: swOrder,
+	}
+}
+
 // IntegrationTime is the integration time in a correlation.
 type IntegrationTime uint8
 
