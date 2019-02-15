@@ -15,6 +15,14 @@ type WFSConfig struct {
 	Switch     *SwitchConfig
 }
 
+// NewWFSConfig returns the configure of MAO wavefront sensor.
+func NewWFSConfig(corrConf *CorrelatorConfig, swConf *SwitchConfig) *WFSConfig {
+	return &WFSConfig{
+		Correlator: corrConf,
+		Switch:     swConf,
+	}
+}
+
 // CorrelatorConfig represents the configure for the correlator of MAO.
 type CorrelatorConfig struct {
 	IntegrationTime IntegrationTime
