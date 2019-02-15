@@ -21,6 +21,14 @@ type CorrelatorConfig struct {
 	WindowFunction  WindowFunction
 }
 
+// NewCorrelatorConfig returns the configure of the correlator for MAO wavefront sensor.
+func NewCorrelatorConfig(integTime IntegrationTime, winFunc WindowFunction) *CorrelatorConfig {
+	return &CorrelatorConfig{
+		IntegrationTime: integTime,
+		WindowFunction:  winFunc,
+	}
+}
+
 // SwitchConfig represents the configure for the switch of MAO.
 type SwitchConfig struct {
 	SwitchOrder SwitchOrder
