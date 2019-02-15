@@ -1,6 +1,6 @@
 package ports
 
-// WFSConfig represents the configure for MAO.
+// WFSConfig represents the configure for MAO wavefront sensor.
 type WFSConfig struct {
 	IntegrationTime IntegrationTime
 	WindowFunction  WindowFunction
