@@ -9,15 +9,13 @@ import (
 
 // WFSInteractor is the interactor for MAO controller.
 type WFSInteractor struct {
-	ConfigPort ports.ConfigPort
-	Handler    domain.WFSHandler
+	Handler domain.WFSHandler
 }
 
 // NewWFSInteractor creates the new interactor for the WFS usecase.
-func NewWFSInteractor(confPort ports.ConfigPort, handler domain.WFSHandler) *WFSInteractor {
+func NewWFSInteractor(handler domain.WFSHandler) *WFSInteractor {
 	return &WFSInteractor{
-		ConfigPort: confPort,
-		Handler:    handler,
+		Handler: handler,
 	}
 }
 
