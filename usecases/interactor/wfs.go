@@ -1,8 +1,6 @@
 package interactor
 
 import (
-	"time"
-
 	"github.com/mao-wfs/maoctrl/domain"
 	"github.com/mao-wfs/maoctrl/usecases/ports"
 )
@@ -30,8 +28,8 @@ func (i *WFSInteractor) Finalize() error {
 }
 
 // Start starts MAO wavefront sensor.
-func (i *WFSInteractor) Start(beginTime time.Time) error {
-	return i.Handler.Start(beginTime)
+func (i *WFSInteractor) Start(t *ports.WFSTime) error {
+	return i.Handler.Start(t)
 }
 
 // Halt stops MAO wavefront sensor.
