@@ -2,7 +2,7 @@ package interactor
 
 import (
 	"github.com/mao-wfs/maoctrl/domain"
-	"github.com/mao-wfs/maoctrl/usecases/ports"
+	"github.com/mao-wfs/maoctrl/usecases/input"
 )
 
 // WFSInteractor is the interactor for MAO controller.
@@ -17,22 +17,24 @@ func NewWFSInteractor(handler domain.WFSHandler) *WFSInteractor {
 	}
 }
 
-// Initialize initialize MAO wavefront sensor.
-func (i *WFSInteractor) Initialize(conf *ports.WFSConfig) error {
+// InitializeWFS initializes MAO-WFS.
+func (i *WFSInteractor) InitializeWFS(req *input.InitRequest) error {
+	conf := req.GetWFSConf()
 	return i.Handler.Initialize(conf)
 }
 
-// Finalize finalize MAO wavefront sensor.
-func (i *WFSInteractor) Finalize() error {
+// FinalizeWFS finalizes MAO-WFS.
+func (i *WFSInteractor) FinalizeWFS() error {
 	return i.Handler.Finalize()
 }
 
-// Start starts MAO wavefront sensor.
-func (i *WFSInteractor) Start(t *ports.WFSTime) error {
+// StartWFS starts MAO-WFS.
+func (i *WFSInteractor) StartWFS(req *input.StartRequest) error {
+	t := req.GetWFSTime()
 	return i.Handler.Start(t)
 }
 
-// Halt stops MAO wavefront sensor.
-func (i *WFSInteractor) Halt() error {
+// HaltWFS halts MAO-WFS.
+func (i *WFSInteractor) HaltWFS() error {
 	return i.Handler.Halt()
 }
