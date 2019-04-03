@@ -3,7 +3,7 @@ package device
 import (
 	"golang.org/x/xerrors"
 
-	"github.com/mao-wfs/maoctrl/domain"
+	"github.com/mao-wfs/mao-ctrl/domain"
 )
 
 // WFSHandler is the handler of MAO-WFS.

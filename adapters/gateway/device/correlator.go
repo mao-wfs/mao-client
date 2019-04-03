@@ -6,7 +6,7 @@ import (
 
 	"golang.org/x/xerrors"
 
-	"github.com/mao-wfs/maoctrl/domain"
+	"github.com/mao-wfs/mao-ctrl/domain"
 )
 
 // Result codes of the correlator operations.

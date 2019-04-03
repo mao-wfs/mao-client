@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"github.com/mao-wfs/maoctrl/adapters/gateway/device"
-	"github.com/mao-wfs/maoctrl/usecases/input"
-	"github.com/mao-wfs/maoctrl/usecases/interactor"
+	"github.com/mao-wfs/mao-ctrl/adapters/gateway/device"
+	"github.com/mao-wfs/mao-ctrl/usecases/input"
+	"github.com/mao-wfs/mao-ctrl/usecases/interactor"
 )
 
 // WFSController is the controller of MAO-WFS.
