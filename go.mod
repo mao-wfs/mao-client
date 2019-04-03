@@ -7,6 +7,6 @@ require (
 	github.com/mattn/go-colorable v0.1.1 // indirect
 	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/valyala/fasttemplate v1.0.1 // indirect
-	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c // indirect
+	golang.org/x/crypto v0.0.0-20190403202508-8e1b8d32e692 // indirect
 	golang.org/x/xerrors v0.0.0-20190315151331-d61658bd2e18
 )
