@@ -39,8 +39,7 @@ func (h *SwitchHandler) Finalize() error {
 
 // Start starts the switch of MAO-WFS.
 func (h *SwitchHandler) Start() error {
-	msg := "OUTP ON\n"
-	if err := h.Write(msg); err != nil {
+	if err := h.start(); err != nil {
 		return xerrors.Errorf("error in Start(): %w", err)
 	}
 	if err := h.checkResult(); err != nil {
@@ -86,6 +85,14 @@ func (h *SwitchHandler) reset() error {
 
 func (h *SwitchHandler) clearStatus() error {
 	msg := "*CLS\n"
+	if err := h.Write(msg); err != nil {
+		return err
+	}
+	return h.checkResult()
+}
+
+func (h *SwitchHandler) start() error {
+	msg := "OUTP ON\n"
 	if err := h.Write(msg); err != nil {
 		return err
 	}
