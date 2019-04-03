@@ -42,9 +42,6 @@ func (h *SwitchHandler) Start() error {
 	if err := h.start(); err != nil {
 		return xerrors.Errorf("error in Start(): %w", err)
 	}
-	if err := h.checkResult(); err != nil {
-		return xerrors.Errorf("error in Start(): %w", err)
-	}
 	return nil
 }
 
