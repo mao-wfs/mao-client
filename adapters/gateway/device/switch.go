@@ -28,10 +28,7 @@ func (h *SwitchHandler) Initialize(swOrder domain.SwitchOrder) error {
 
 // Finalize finalizes the switch of MAO-WFS.
 func (h *SwitchHandler) Finalize() error {
-	if err := h.reset(); err != nil {
-		return xerrors.Errorf("error in Finalize(): %w", err)
-	}
-	if err := h.clearStatus(); err != nil {
+	if err := h.finalize(); err != nil {
 		return xerrors.Errorf("error in Finalize(): %w", err)
 	}
 	return nil
@@ -82,6 +79,16 @@ func (h *SwitchHandler) clearStatus() error {
 		return err
 	}
 	return h.checkResult()
+}
+
+func (h *SwitchHandler) finalize() error {
+	if err := h.reset(); err != nil {
+		return err
+	}
+	if err := h.clearStatus(); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (h *SwitchHandler) start() error {
