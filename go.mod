@@ -1,15 +1,12 @@
-module github.com/mao-wfs/maoctrl
+module github.com/mao-wfs/mao-ctrl
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.2.8 // indirect
-	github.com/mattn/go-colorable v0.1.0 // indirect
-	github.com/mattn/go-isatty v0.0.4 // indirect
-	github.com/stretchr/testify v1.3.0 // indirect
-	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasttemplate v0.0.0-20170224212429-dcecefd839c4 // indirect
-	golang.org/x/crypto v0.0.0-20190211182817-74369b46fc67 // indirect
-	golang.org/x/sys v0.0.0-20190213121743-983097b1a8a3 // indirect
-	golang.org/x/xerrors v0.0.0-20190212162355-a5947ffaace3
+	github.com/mattn/go-colorable v0.1.1 // indirect
+	github.com/mattn/go-isatty v0.0.7 // indirect
+	github.com/valyala/fasttemplate v1.0.1 // indirect
+	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c // indirect
+	golang.org/x/xerrors v0.0.0-20190315151331-d61658bd2e18
 )
