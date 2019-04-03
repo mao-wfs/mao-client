@@ -1,4 +1,4 @@
-# maoctrl
+# mao-ctrl
 This is the MAO controller server.
 
 ## Installation
