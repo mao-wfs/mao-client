@@ -50,12 +50,8 @@ func (h *SwitchHandler) Start() error {
 
 // Halt halts the switch of MAO-WFS.
 func (h *SwitchHandler) Halt() error {
-	msg := "OUTP OFF\n"
-	if err := h.Write(msg); err != nil {
-		return xerrors.Errorf("error in Halt(): %w", err)
-	}
-	if err := h.checkResult(); err != nil {
-		return xerrors.Errorf("error in Halt(): %w", err)
+	if err := h.halt(); err != nil {
+		return xerrors.Errorf("error in Start(): %w", err)
 	}
 	return nil
 }
@@ -93,6 +89,14 @@ func (h *SwitchHandler) clearStatus() error {
 
 func (h *SwitchHandler) start() error {
 	msg := "OUTP ON\n"
+	if err := h.Write(msg); err != nil {
+		return err
+	}
+	return h.checkResult()
+}
+
+func (h *SwitchHandler) halt() error {
+	msg := "OUTP OFF\n"
 	if err := h.Write(msg); err != nil {
 		return err
 	}
