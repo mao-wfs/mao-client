@@ -81,6 +81,14 @@ func (h *SwitchHandler) clearStatus() error {
 	return h.checkResult()
 }
 
+func (h *SwitchHandler) enableOutput() error {
+	msg := "OUTP ON\n"
+	if err := h.Write(msg); err != nil {
+		return err
+	}
+	return h.checkResult()
+}
+
 func (h *SwitchHandler) finalize() error {
 	if err := h.reset(); err != nil {
 		return err
@@ -92,11 +100,10 @@ func (h *SwitchHandler) finalize() error {
 }
 
 func (h *SwitchHandler) start() error {
-	msg := "OUTP ON\n"
-	if err := h.Write(msg); err != nil {
+	if err := h.enableOutput(); err != nil {
 		return err
 	}
-	return h.checkResult()
+	return nil
 }
 
 func (h *SwitchHandler) halt() error {
