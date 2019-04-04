@@ -21,7 +21,7 @@ func NewSwitchHandler(clt Client) *SwitchHandler {
 // Initialize initializes the switch of MAO-WFS.
 // This is the external method.
 func (h *SwitchHandler) Initialize(swOrder domain.SwitchOrder) error {
-	if err := h.enableDigPatt(); err != nil {
+	if err := h.initialize(swOrder); err != nil {
 		return xerrors.Errorf("error in Initialize(): %w", err)
 	}
 	return nil
@@ -50,6 +50,15 @@ func (h *SwitchHandler) Start() error {
 func (h *SwitchHandler) Halt() error {
 	if err := h.halt(); err != nil {
 		return xerrors.Errorf("error in Start(): %w", err)
+	}
+	return nil
+}
+
+// initialize initializes the switch of MAO-WFS.
+// This is the internal method.
+func (h *SwitchHandler) initialize(swOrder domain.SwitchOrder) error {
+	if err := h.enableDigPatt(); err != nil {
+		return err
 	}
 	return nil
 }
