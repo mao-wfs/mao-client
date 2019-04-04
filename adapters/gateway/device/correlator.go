@@ -46,14 +46,9 @@ func (h *CorrelatorHandler) Initialize() error {
 }
 
 // Finalize finalizes the correlator of MAO-WFS.
+// This is the external method.
 func (h *CorrelatorHandler) Finalize() error {
-	msg := "reset=system;"
-	buf, err := h.Query(msg, defaultBufSize)
-	if err != nil {
-		return xerrors.Errorf("error in Finalize(): %w", err)
-	}
-	res := string(buf)
-	if err := h.checkResult(res); err != nil {
+	if err := h.finalize(); err != nil {
 		return xerrors.Errorf("error in Finalize(): %w", err)
 	}
 	return nil
@@ -74,6 +69,15 @@ func (h *CorrelatorHandler) Halt() error {
 	res := string(buf)
 	if err := h.checkResult(res); err != nil {
 		return xerrors.Errorf("error in Halt(): %w", err)
+	}
+	return nil
+}
+
+// finalize finalizes the correlator of MAO-WFS.
+// This is the internal method.
+func (h *CorrelatorHandler) finalize() error {
+	if err := h.reset(); err != nil {
+		return err
 	}
 	return nil
 }
@@ -102,4 +106,18 @@ func (h *CorrelatorHandler) getResultCode(msg string) int {
 	re := regexp.MustCompile(`[0-9]`)
 	resCode, _ := strconv.Atoi(re.FindString(msg))
 	return resCode
+}
+
+// reset resets the correlator.
+func (h *CorrelatorHandler) reset() error {
+	msg := "reset=system;"
+	buf, err := h.Query(msg, defaultBufSize)
+	if err != nil {
+		return err
+	}
+	res := string(buf)
+	if err := h.checkResult(res); err != nil {
+		return xerrors.Errorf("error in Halt(): %w", err)
+	}
+	return nil
 }
