@@ -19,6 +19,7 @@ func NewSwitchHandler(clt Client) *SwitchHandler {
 }
 
 // Initialize initializes the switch of MAO-WFS.
+// This is the external method.
 func (h *SwitchHandler) Initialize(swOrder domain.SwitchOrder) error {
 	if err := h.enableDigPatt(); err != nil {
 		return xerrors.Errorf("error in Initialize(): %w", err)
@@ -27,6 +28,7 @@ func (h *SwitchHandler) Initialize(swOrder domain.SwitchOrder) error {
 }
 
 // Finalize finalizes the switch of MAO-WFS.
+// This is the external method.
 func (h *SwitchHandler) Finalize() error {
 	if err := h.finalize(); err != nil {
 		return xerrors.Errorf("error in Finalize(): %w", err)
@@ -35,6 +37,7 @@ func (h *SwitchHandler) Finalize() error {
 }
 
 // Start starts the switch of MAO-WFS.
+// This is the external method.
 func (h *SwitchHandler) Start() error {
 	if err := h.start(); err != nil {
 		return xerrors.Errorf("error in Start(): %w", err)
@@ -43,6 +46,7 @@ func (h *SwitchHandler) Start() error {
 }
 
 // Halt halts the switch of MAO-WFS.
+// This is the external method.
 func (h *SwitchHandler) Halt() error {
 	if err := h.halt(); err != nil {
 		return xerrors.Errorf("error in Start(): %w", err)
@@ -65,6 +69,7 @@ func (h *SwitchHandler) checkResult() error {
 	return nil
 }
 
+// reset resets the switch to the factory settings.
 func (h *SwitchHandler) reset() error {
 	msg := "*RST\n"
 	if err := h.Write(msg); err != nil {
@@ -73,6 +78,7 @@ func (h *SwitchHandler) reset() error {
 	return h.checkResult()
 }
 
+// clearStatus clear the current status of the switch.
 func (h *SwitchHandler) clearStatus() error {
 	msg := "*CLS\n"
 	if err := h.Write(msg); err != nil {
@@ -81,6 +87,7 @@ func (h *SwitchHandler) clearStatus() error {
 	return h.checkResult()
 }
 
+// enableOutput starts to output signal.
 func (h *SwitchHandler) enableOutput() error {
 	msg := "OUTP ON\n"
 	if err := h.Write(msg); err != nil {
@@ -89,6 +96,7 @@ func (h *SwitchHandler) enableOutput() error {
 	return h.checkResult()
 }
 
+// disableOutput stops to output signal.
 func (h *SwitchHandler) disableOutput() error {
 	msg := "OUTP OFF\n"
 	if err := h.Write(msg); err != nil {
@@ -97,6 +105,8 @@ func (h *SwitchHandler) disableOutput() error {
 	return nil
 }
 
+// finalize finalizes the switch of MAO-WFS.
+// This is the internal method.
 func (h *SwitchHandler) finalize() error {
 	if err := h.reset(); err != nil {
 		return err
@@ -107,6 +117,8 @@ func (h *SwitchHandler) finalize() error {
 	return nil
 }
 
+// start starts the switch of MAO-WFS.
+// This is the internal method.
 func (h *SwitchHandler) start() error {
 	if err := h.enableOutput(); err != nil {
 		return err
@@ -114,6 +126,8 @@ func (h *SwitchHandler) start() error {
 	return nil
 }
 
+// halt halts the switch of MAO-WFS.
+// This is the internal method.
 func (h *SwitchHandler) halt() error {
 	if err := h.disableOutput(); err != nil {
 		return err
@@ -121,6 +135,7 @@ func (h *SwitchHandler) halt() error {
 	return nil
 }
 
+// enableDigPatt enable the digital pattern output.
 func (h *SwitchHandler) enableDigPatt() error {
 	msg := "DIG:PATT ON\n"
 	if err := h.Write(msg); err != nil {
