@@ -54,6 +54,36 @@ func (h *SwitchHandler) Halt() error {
 	return nil
 }
 
+// finalize finalizes the switch of MAO-WFS.
+// This is the internal method.
+func (h *SwitchHandler) finalize() error {
+	if err := h.reset(); err != nil {
+		return err
+	}
+	if err := h.clearStatus(); err != nil {
+		return err
+	}
+	return nil
+}
+
+// start starts the switch of MAO-WFS.
+// This is the internal method.
+func (h *SwitchHandler) start() error {
+	if err := h.enableOutput(); err != nil {
+		return err
+	}
+	return nil
+}
+
+// halt halts the switch of MAO-WFS.
+// This is the internal method.
+func (h *SwitchHandler) halt() error {
+	if err := h.disableOutput(); err != nil {
+		return err
+	}
+	return nil
+}
+
 // checkResult checks the result of a switch operation.
 func (h *SwitchHandler) checkResult() error {
 	msg := "SYST:ERR?\n"
@@ -100,36 +130,6 @@ func (h *SwitchHandler) enableOutput() error {
 func (h *SwitchHandler) disableOutput() error {
 	msg := "OUTP OFF\n"
 	if err := h.Write(msg); err != nil {
-		return err
-	}
-	return nil
-}
-
-// finalize finalizes the switch of MAO-WFS.
-// This is the internal method.
-func (h *SwitchHandler) finalize() error {
-	if err := h.reset(); err != nil {
-		return err
-	}
-	if err := h.clearStatus(); err != nil {
-		return err
-	}
-	return nil
-}
-
-// start starts the switch of MAO-WFS.
-// This is the internal method.
-func (h *SwitchHandler) start() error {
-	if err := h.enableOutput(); err != nil {
-		return err
-	}
-	return nil
-}
-
-// halt halts the switch of MAO-WFS.
-// This is the internal method.
-func (h *SwitchHandler) halt() error {
-	if err := h.disableOutput(); err != nil {
 		return err
 	}
 	return nil
