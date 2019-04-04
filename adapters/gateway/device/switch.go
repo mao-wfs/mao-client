@@ -89,6 +89,14 @@ func (h *SwitchHandler) enableOutput() error {
 	return h.checkResult()
 }
 
+func (h *SwitchHandler) disableOutput() error {
+	msg := "OUTP OFF\n"
+	if err := h.Write(msg); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (h *SwitchHandler) finalize() error {
 	if err := h.reset(); err != nil {
 		return err
@@ -107,11 +115,10 @@ func (h *SwitchHandler) start() error {
 }
 
 func (h *SwitchHandler) halt() error {
-	msg := "OUTP OFF\n"
-	if err := h.Write(msg); err != nil {
+	if err := h.disableOutput(); err != nil {
 		return err
 	}
-	return h.checkResult()
+	return nil
 }
 
 func (h *SwitchHandler) enableDigPatt() error {
