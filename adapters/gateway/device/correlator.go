@@ -150,41 +150,17 @@ func (h *CorrelatorHandler) execCmd(msg string) error {
 // reset resets the correlator.
 func (h *CorrelatorHandler) reset() error {
 	msg := "reset=system;"
-	buf, err := h.Query(msg, defaultBufSize)
-	if err != nil {
-		return err
-	}
-	res := string(buf)
-	if err := h.checkResult(res); err != nil {
-		return err
-	}
-	return nil
+	return h.execCmd(msg)
 }
 
 // startCorrelation starts the correlation.
 func (h *CorrelatorHandler) startCorrelation() error {
 	msg := "ctl_corstart=2002001010000:0x10;"
-	buf, err := h.Query(msg, defaultBufSize)
-	if err != nil {
-		return err
-	}
-	res := string(buf)
-	if err := h.checkResult(res); err != nil {
-		return err
-	}
-	return nil
+	return h.execCmd(msg)
 }
 
 // stopCorrelation stops the correlation.
 func (h *CorrelatorHandler) stopCorrelation() error {
 	msg := "corr_stop=2002001010000;"
-	buf, err := h.Query(msg, defaultBufSize)
-	if err != nil {
-		return nil
-	}
-	res := string(buf)
-	if err := h.checkResult(res); err != nil {
-		return err
-	}
-	return nil
+	return h.execCmd(msg)
 }
