@@ -1,4 +1,4 @@
-module github.com/mao-wfs/mao-ctrl
+module github.com/mao-wfs/mao-client
 
 go 1.12
 

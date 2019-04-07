@@ -1,10 +1,11 @@
-# How to contribute to maoctrl
+# How to contribute to mao-client
 ## Reporting issue
-When reporting issue please include as much detail as possible about your operating system, `mao-ctrl` version and `Go` version. Whenever possible, please also include a brief, self-contained code example that demonstrates the problem.
+When reporting issue please include as much detail as possible about your operating system, `mao-client` version and `Go` version.
+Whenever possible, please also include a brief, self-contained code example that demonstrates the problem.
 
 
 ## Contributing code
-Thanks for your interest in contributing code to `mao-ctrl`!
+Thanks for your interest in contributing code to `mao-client`!
 
 When sending pull request please write as much detail as possible.
 

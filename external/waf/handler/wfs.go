@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/mao-wfs/mao-ctrl/adapters/controller"
-	"github.com/mao-wfs/mao-ctrl/usecases/input"
+	"github.com/mao-wfs/mao-client/adapters/controller"
+	"github.com/mao-wfs/mao-client/usecases/input"
 )
 
 // InitializeWFS initializes MAO-WFS.

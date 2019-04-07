@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mao-wfs/mao-ctrl/external/waf"
+	"github.com/mao-wfs/mao-client/external/waf"
 )
 
 func main() {

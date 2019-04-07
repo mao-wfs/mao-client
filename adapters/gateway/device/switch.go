@@ -5,7 +5,7 @@ import (
 
 	"golang.org/x/xerrors"
 
-	"github.com/mao-wfs/mao-ctrl/domain"
+	"github.com/mao-wfs/mao-client/domain"
 )
 
 // SwitchHandler is the handler of the switch of MAO-WFS.

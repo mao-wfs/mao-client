@@ -7,10 +7,10 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	"github.com/mao-wfs/mao-ctrl/adapters/controller"
-	"github.com/mao-wfs/mao-ctrl/adapters/gateway/device"
-	"github.com/mao-wfs/mao-ctrl/external/client"
-	"github.com/mao-wfs/mao-ctrl/external/waf/handler"
+	"github.com/mao-wfs/mao-client/adapters/controller"
+	"github.com/mao-wfs/mao-client/adapters/gateway/device"
+	"github.com/mao-wfs/mao-client/external/client"
+	"github.com/mao-wfs/mao-client/external/waf/handler"
 )
 
 type Server struct {
