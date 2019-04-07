@@ -1,8 +1,8 @@
 package interactor
 
 import (
-	"github.com/mao-wfs/mao-ctrl/domain"
-	"github.com/mao-wfs/mao-ctrl/usecases/input"
+	"github.com/mao-wfs/mao-client/domain"
+	"github.com/mao-wfs/mao-client/usecases/input"
 )
 
 // WFSInteractor is the interactor for MAO controller.

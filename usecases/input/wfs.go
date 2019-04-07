@@ -1,7 +1,7 @@
 package input
 
 import (
-	"github.com/mao-wfs/mao-ctrl/domain"
+	"github.com/mao-wfs/mao-client/domain"
 )
 
 // WFSInputPort is the input port for MAO-WFS.
