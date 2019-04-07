@@ -130,7 +130,7 @@ func (h *CorrelatorHandler) reset() error {
 	}
 	res := string(buf)
 	if err := h.checkResult(res); err != nil {
-		return xerrors.Errorf("error in Halt(): %w", err)
+		return err
 	}
 	return nil
 }
