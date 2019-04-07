@@ -63,14 +63,9 @@ func (h *CorrelatorHandler) Start(t domain.SensingTime) error {
 }
 
 // Halt halts the correlator of MAO-WFS.
+// This is the external method.
 func (h *CorrelatorHandler) Halt() error {
-	msg := "corr_stop=2002001010000;"
-	buf, err := h.Query(msg, defaultBufSize)
-	if err != nil {
-		return xerrors.Errorf("error in Halt(): %w", err)
-	}
-	res := string(buf)
-	if err := h.checkResult(res); err != nil {
+	if err := h.halt(); err != nil {
 		return xerrors.Errorf("error in Halt(): %w", err)
 	}
 	return nil
@@ -86,6 +81,15 @@ func (h *CorrelatorHandler) initialize() error {
 // This is the internal method.
 func (h *CorrelatorHandler) finalize() error {
 	if err := h.reset(); err != nil {
+		return err
+	}
+	return nil
+}
+
+// halst halts the correlator of MAO-WFS.
+// This is the internal method.
+func (h *CorrelatorHandler) halt() error {
+	if err := h.stop(); err != nil {
 		return err
 	}
 	return nil
@@ -127,6 +131,20 @@ func (h *CorrelatorHandler) reset() error {
 	res := string(buf)
 	if err := h.checkResult(res); err != nil {
 		return xerrors.Errorf("error in Halt(): %w", err)
+	}
+	return nil
+}
+
+// stop stops the correlation.
+func (h *CorrelatorHandler) stop() error {
+	msg := "corr_stop=2002001010000;"
+	buf, err := h.Query(msg, defaultBufSize)
+	if err != nil {
+		return nil
+	}
+	res := string(buf)
+	if err := h.checkResult(res); err != nil {
+		return err
 	}
 	return nil
 }
