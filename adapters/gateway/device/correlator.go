@@ -58,7 +58,11 @@ func (h *CorrelatorHandler) Finalize() error {
 }
 
 // Start starts the correlator of MAO-WFS.
+// This is the external method.
 func (h *CorrelatorHandler) Start(t domain.SensingTime) error {
+	if err := h.start(); err != nil {
+		return xerrors.Errorf("error in Start(): %w", err)
+	}
 	return nil
 }
 
@@ -81,6 +85,15 @@ func (h *CorrelatorHandler) initialize() error {
 // This is the internal method.
 func (h *CorrelatorHandler) finalize() error {
 	if err := h.reset(); err != nil {
+		return err
+	}
+	return nil
+}
+
+// start starts the correlator of MAO-WFS.
+// This is the internal method.
+func (h *CorrelatorHandler) start() error {
+	if err := h.startCorrelation(); err != nil {
 		return err
 	}
 	return nil
@@ -124,6 +137,20 @@ func (h *CorrelatorHandler) getResultCode(msg string) int {
 // reset resets the correlator.
 func (h *CorrelatorHandler) reset() error {
 	msg := "reset=system;"
+	buf, err := h.Query(msg, defaultBufSize)
+	if err != nil {
+		return err
+	}
+	res := string(buf)
+	if err := h.checkResult(res); err != nil {
+		return err
+	}
+	return nil
+}
+
+// startCorrelation starts the correlation.
+func (h *CorrelatorHandler) startCorrelation() error {
+	msg := "ctl_corstart=2002001010000:0x10;"
 	buf, err := h.Query(msg, defaultBufSize)
 	if err != nil {
 		return err
