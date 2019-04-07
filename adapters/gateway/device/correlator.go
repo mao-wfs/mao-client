@@ -102,7 +102,7 @@ func (h *CorrelatorHandler) start() error {
 // halst halts the correlator of MAO-WFS.
 // This is the internal method.
 func (h *CorrelatorHandler) halt() error {
-	if err := h.stop(); err != nil {
+	if err := h.stopCorrelation(); err != nil {
 		return err
 	}
 	return nil
@@ -162,8 +162,8 @@ func (h *CorrelatorHandler) startCorrelation() error {
 	return nil
 }
 
-// stop stops the correlation.
-func (h *CorrelatorHandler) stop() error {
+// stopCorrelation stops the correlation.
+func (h *CorrelatorHandler) stopCorrelation() error {
 	msg := "corr_stop=2002001010000;"
 	buf, err := h.Query(msg, defaultBufSize)
 	if err != nil {
