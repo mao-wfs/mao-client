@@ -134,6 +134,19 @@ func (h *CorrelatorHandler) getResultCode(msg string) int {
 	return resCode
 }
 
+// execCmd execute a specified command.
+func (h *CorrelatorHandler) execCmd(msg string) error {
+	buf, err := h.Query(msg, defaultBufSize)
+	if err != nil {
+		return err
+	}
+	res := string(buf)
+	if err := h.checkResult(res); err != nil {
+		return err
+	}
+	return nil
+}
+
 // reset resets the correlator.
 func (h *CorrelatorHandler) reset() error {
 	msg := "reset=system;"
