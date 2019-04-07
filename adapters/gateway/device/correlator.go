@@ -42,6 +42,9 @@ func NewCorrelatorHandler(clt Client) *CorrelatorHandler {
 
 // Initialize initializes the correlator of MAO-WFS.
 func (h *CorrelatorHandler) Initialize() error {
+	if err := h.initialize(); err != nil {
+		return xerrors.Errorf("error in Initialize(): %w", err)
+	}
 	return nil
 }
 
@@ -70,6 +73,12 @@ func (h *CorrelatorHandler) Halt() error {
 	if err := h.checkResult(res); err != nil {
 		return xerrors.Errorf("error in Halt(): %w", err)
 	}
+	return nil
+}
+
+// initialize initializes the correlator.
+// This is the internal method.
+func (h *CorrelatorHandler) initialize() error {
 	return nil
 }
 
